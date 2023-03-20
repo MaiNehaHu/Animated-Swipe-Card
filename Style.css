@@ -1,0 +1,130 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  --color : linear-gradient(to bottom, pink, cornflowerblue);
+
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  width: 400px;
+  padding: 20px 20px 20px;
+  background-color: white;
+  border-radius: 0.9rem;
+  box-shadow: 0 0 10px black;
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.labels {
+  height: 50px;
+  width: 100%;
+  border-radius: 30px;
+  margin-bottom: 20px;
+  position: relative;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+.labels > label {
+  width: 30%;
+  border-radius: 30px;
+  font-size: 18px;
+  z-index: 2;
+
+  position: relative;
+  display: flex;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+}
+label:nth-child(2) {
+  width: 40%;           /*Thoda bada word h*/
+}
+
+
+#tab-1:checked ~ .labels .tab-1,
+#tab-2:checked ~ .labels .tab-2,
+#tab-3:checked ~ .labels .tab-3 {
+  color: #fff;         /*if selected then text- color*/
+}
+
+.slider {
+  position: absolute;
+  height: 100%;
+  border-radius: inherit;
+
+  transform: translateX(-50%);
+
+  background: var(--color);
+  transition: all 0.3s ease;
+}
+
+/*For the slider to swipe. Translating over X-axis*/
+#tab-1:checked ~ .labels > .slider {
+  left: 2%;
+  width: 90px;
+  transform: translateX(0%);
+}
+#tab-2:checked ~ .labels > .slider {
+  left: 50%;
+  width: 120px;
+  transform: translateX(-50%);
+}
+#tab-3:checked ~ .labels > .slider {
+  left: 98%;
+  width: 90px;
+  transform: translateX(-100%);
+}
+
+.container > input {
+  display: none;       /*Radio*/
+}
+
+.cards-container {
+  overflow: hidden;
+  border-radius: 20px;
+}
+.cards {
+  width: 300%;             /*3 card width*/
+  display: flex;
+  text-align: center;
+  flex-direction: row;     /*important*/
+}
+.card {
+  width: 33.3%;
+  height: 400px;
+  font-size: xx-large;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: white;
+  background: linear-gradient(140deg, grey, black);
+}
+.cards .card-1 {
+  transition: all 0.5s ease;
+}
+
+/*For card swipe decreasing margins*/
+#tab-1:checked ~ .cards-container .cards > .card-1 {
+  margin-left: 0%;
+}
+#tab-2:checked ~ .cards-container .cards > .card-1 {
+  margin-left: -33.5%;
+}
+#tab-3:checked ~ .cards-container .cards > .card-1 {
+  margin-left: -66.8%;
+}
